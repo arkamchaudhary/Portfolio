@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Navbar - Portfolio</title>
+
+    <!-- Font Awesome Icons for Mobile Menu Toggle -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ================= NAVBAR CSS SECTION ================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+        }
+
+        /* NAVBAR MAIN CONTAINER */
+        .header-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 70px;
+            background-color: #0d2847; /* Screenshot Dark Blue Color */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* BRAND / LOGO (IF NEEDED) */
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand i {
+            color: #38bdf8;
+        }
+
+        /* NAV LINKS - RIGHT ALIGNED */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            margin-left: auto; /* Right alignment */
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        /* HOVER & ACTIVE LINK STATE */
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8; /* Active Highlight Blue */
+        }
+
+        /* HAMBURGER ICON FOR MOBILE (HIDDEN ON DESKTOP) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ================= MOBILE RESPONSIVE MEDIA QUERY ================= */
+        @media (max-width: 768px) {
+            .header-navbar {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Show menu toggle button on mobile */
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #0d2847;
+                flex-direction: column;
+                gap: 0;
+                display: none; /* Hidden by default */
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* CLASS ADDED VIA JS WHEN TOGGLED */
+            .nav-links.show-menu {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER NAVBAR HTML ================= -->
+    <header class="header-navbar">
+        
+        <!-- LOGO (Optional) -->
+        
+        <!-- NAVIGATION LINKS -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" >About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ================= JAVASCRIPT FOR MOBILE TOGGLE ================= -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle menu open/close on mobile
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show-menu');
+            
+            // Toggle Icon between Bars and Close (X)
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('show-menu')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking any menu link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show-menu');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!-- Font Awesome Icons Link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ================= BLUE & WHITE LIGHT THEME CONTACT STYLES ================= -->
+<style>
+    /* RESET & BASE */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* MAIN CONTACT WRAPPER (LIGHT BACKGROUND TO MATCH SITE BODY) */
+    .contact-section-wrapper {
+        width: 100% !important;
+        background-color: #f8fafc !important; /* Clean Light Blue-White Background */
+        color: #0f2c59 !important;
+        padding: 80px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-inner-container {
+        max-width: 1150px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr; /* 2 Columns */
+        gap: 50px;
+        align-items: center;
+    }
+
+    /* LEFT SIDE: CONTACT DETAILS */
+    .contact-info-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-main-heading {
+        font-size: 38px;
+        font-weight: 900;
+        color: #0f2c59; /* Deep Royal Blue */
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+    }
+
+    .contact-sub-text {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #475569; /* Slate Text */
+        margin-bottom: 35px;
+        max-width: 500px;
+    }
+
+    /* DETAILS LIST WITH BLUE CIRCLE ICONS */
+    .contact-details-list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .contact-detail-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .contact-icon-circle {
+        width: 48px;
+        height: 48px;
+        background-color: #0066ff; /* Vibrant Blue Circle */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 18px;
+        flex-shrink: 0;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.25);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .contact-icon-circle:hover {
+        background-color: #0052cc;
+        transform: translateY(-3px);
+    }
+
+    .contact-text-box h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0f2c59; /* Deep Royal Blue */
+        margin-bottom: 4px;
+    }
+
+    .contact-text-box p, 
+    .contact-text-box a {
+        font-size: 14px;
+        color: #64748b;
+        text-decoration: none;
+        line-height: 1.5;
+        transition: color 0.2s ease;
+    }
+
+    .contact-text-box a:hover {
+        color: #0066ff;
+    }
+
+    /* RIGHT SIDE: WHITE FORM CARD */
+    .contact-form-card {
+        background-color: #ffffff; /* Crisp White Card */
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(15, 44, 89, 0.08); /* Soft Shadow */
+        border: 1px solid #e2e8f0;
+        color: #1e293b;
+    }
+
+    .form-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0f2c59;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0f2c59;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        background-color: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #1e293b;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-input:focus {
+        border-color: #0066ff;
+        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
+        background-color: #ffffff;
+    }
+
+    textarea.form-input {
+        resize: vertical;
+        min-height: 110px;
+    }
+
+    .btn-send-message {
+        width: 100%;
+        padding: 14px;
+        background-color: #0066ff; /* Royal Blue Button */
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(0, 102, 255, 0.25);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        margin-top: 10px;
+    }
+
+    .btn-send-message:hover {
+        background-color: #0052cc;
+        transform: translateY(-2px);
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 900px) {
+        .contact-section-wrapper {
+            padding: 50px 20px !important;
+        }
+
+        .contact-inner-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-left {
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-sub-text {
+            max-width: 100%;
+        }
+
+        .contact-detail-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .contact-form-card {
+            padding: 30px 20px;
+        }
+    }
+</style>
+
+<!-- ================= CONTACT US SECTION HTML ================= -->
+<section class="contact-section-wrapper" id="contact">
+    <div class="contact-inner-container">
+        
+        <!-- LEFT SIDE: CONTACT INFO & SOCIALS -->
+        <div class="contact-info-left">
+            <h2 class="contact-main-heading">Contact Us</h2>
+            <p class="contact-sub-text">
+                Have a project in mind or want to collaborate? Feel free to reach out through the form or connect via direct details below.
+            </p>
+
+            <div class="contact-details-list">
+                <!-- ADDRESS -->
+                <div class="contact-detail-item">
+                    <a href="#" class="contact-icon-circle" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <div class="contact-text-box">
+                        <h4>Address</h4>
+                        <p>523, Tower-B4, Spaze IT-Park, Sohna Road, Sector 49, Gurugram-122018</p>
+                    </div>
+                </div>
+
+                <!-- PHONE -->
+                <div class="contact-detail-item">
+                    <a href="https://wa.me/919319132104" target="_blank" class="contact-icon-circle" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <div class="contact-text-box">
+                        <h4>Phone</h4>
+                        <a href="tel:+919319132104">Ph: +91 931-913-2104</a>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="contact-detail-item">
+                    <a href="mailto:info@nomadzdigital.com" class="contact-icon-circle" title="Email">
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
+                    <div class="contact-text-box">
+                        <h4>Email</h4>
+                        <a href="mailto:info@nomadzdigital.com">info@nomadzdigital.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: FORM CARD -->
+        <div class="contact-form-card">
+            <h3 class="form-title">Get In Touch</h3>
+            
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Your Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Your Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="Your Mobile Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" class="form-input" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-send-message">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Width Footer - Arkam Khan</title>
+
+    <!-- Font Awesome Icons Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ================= FOOTER CSS SECTION ================= -->
+    <style>
+        /* 1. FORCE ZERO MARGIN/PADDING ON BODY & HTML */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            background-color: #0d2847; /* Same background color so no side gap shows */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 2. FULL VIEWPORT BREAKOUT FOOTER (Covers Left & Right 100%) */
+        .portfolio-footer {
+            width: 100vw !important;
+            position: relative;
+            left: 50% !important;
+            right: 50% !important;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+            background-color: #0d2847 !important; /* Screenshot Dark Blue */
+            color: #ffffff;
+            padding: 60px 40px 30px 40px;
+            box-sizing: border-box;
+        }
+
+        /* 3. INNER CENTERED CONTAINER (Keep content nicely structured) */
+        .footer-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Center Divider Line */
+        }
+
+        /* COLUMN 1: BRAND LOGO & SOCIALS */
+        .footer-col-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .footer-logo i {
+            font-size: 24px;
+            color: #38bdf8; /* Sky Blue Accent */
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            max-width: 330px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .social-circle-btn {
+            width: 38px;
+            height: 38px;
+            background-color: #ffffff;
+            color: #0d2847;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .social-circle-btn:hover {
+            transform: translateY(-3px);
+            background-color: #38bdf8;
+            color: #ffffff;
+        }
+
+        /* COLUMN HEADINGS */
+        .footer-heading {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 22px;
+        }
+
+        /* COLUMN 2: QUICK LINKS */
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* COLUMN 3: GET IN TOUCH */
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #cbd5e1;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item i {
+            font-size: 16px;
+            color: #38bdf8;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            color: #ffffff;
+        }
+
+        /* COPYRIGHT BAR */
+        .footer-copyright {
+            text-align: center;
+            padding-top: 25px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ================= MOBILE RESPONSIVE ================= */
+        @media (max-width: 850px) {
+            .footer-container {
+                grid-template-columns: 1fr; /* Mobile single column */
+                gap: 35px;
+            }
+
+            .footer-desc {
+                max-width: 100%;
+            }
+
+            .portfolio-footer {
+                padding: 40px 20px 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= FOOTER SECTION START ================= -->
+    <footer class="portfolio-footer" id="contact">
+        <div class="footer-container">
+            
+            <!-- COLUMN 1: BRAND LOGO, TEXT & SOCIAL BUTTONS -->
+            <div class="footer-col-brand">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-code"></i>
+                    <span>PORTFOLIO</span>
+                </div>
+                <p class="footer-desc">
+                    Building responsive, modern, and high-performance web applications with HTML, CSS, and JavaScript.
+                </p>
+                <div class="footer-socials">
+                    <a href="#" class="social-circle-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-circle-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/919319132104" target="_blank" class="social-circle-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: QUICK LINKS -->
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMN 3: GET IN TOUCH -->
+            <div>
+                <h4 class="footer-heading">Get In Touch</h4>
+                <div class="footer-contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Lucknow Uttar Pardesh</span>
+                    </div>
+                    <a href="tel:+919319132104" class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 9336481632</span>
+                    </a>
+                    <a href="https://wa.me/919319132104" target="_blank" class="contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>+91 9336481632</span>
+                    </a>
+                    <a href="mailto:info@nomadzdigital.com" class="contact-item">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span>arkamkhnah@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COPYRIGHT BAR -->
+        <div class="footer-copyright">
+            Copyright © 2026 | All Rights Reserved
+        </div>
+    </footer>
+    <!-- ================= FOOTER SECTION END ================= -->
+
+</body>
+</html>

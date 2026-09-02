@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Arkam Khan</title>
+
+    <!-- Font Awesome Icons Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= GLOBAL RESET & BASE ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #f8fafc; /* Light Gray/White Base */
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        /* ================= 1. HEADER NAVBAR STYLES (ALAG SECTION) ================= */
+        .header-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 70px;
+            background-color: #0d2847; /* Exact Dark Blue Screenshot Color */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Right Aligned Links */
+            padding: 0 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8; /* Sky Blue Active Highlight */
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ================= 2. ABOUT HERO STYLES ================= */
+        .about-main-wrapper {
+            width: 100%;
+            background-color: #0f2c59;
+            padding: 40px 0 60px 0;
+            color: #ffffff;
+        }
+
+        .about-section {
+            width: 100%;
+            max-width: 1150px;
+            padding: 0 40px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .about-content-left {
+            flex: 1;
+            max-width: 680px;
+        }
+
+        .sub-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .sub-heading::before {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background-color: #38bdf8;
+            display: inline-block;
+        }
+
+        .main-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+
+        .about-desc {
+            font-size: 14.5px;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 16px;
+        }
+
+        .about-photo-right {
+            width: 380px;
+            height: 480px;
+            flex-shrink: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            border: 3px solid #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            mix-blend-mode: normal !important;
+            filter: none !important;
+            opacity: 1 !important;
+        }
+
+        /* ================= 3. MY SKILLS STYLES ================= */
+        .skills-bar-section {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 50px 30px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(15, 44, 89, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .skills-bar-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f2c59;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .skills-bar-title span { color: #0066ff; }
+
+        .skills-bar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .skill-bar-item { width: 100%; }
+
+        .skill-bar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f2c59;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #0066ff;
+            border-radius: 20px;
+        }
+
+        /* ================= 4. PLATFORMS & TOOLS STYLES ================= */
+        .tools-bar-section {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 50px 30px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(15, 44, 89, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .tools-bar-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f2c59;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .tools-bar-title span { color: #0066ff; }
+
+        .tools-bar-container {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .tool-bar-item { width: 100%; }
+
+        .tool-bar-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f2c59;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .tools-progress-track {
+            width: 100%;
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .tools-progress-fill {
+            height: 100%;
+            background-color: #0066ff;
+            border-radius: 20px;
+        }
+
+        /* ================= 5. PROJECTS STYLES ================= */
+        .projects-section-block {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 50px 30px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(15, 44, 89, 0.05);
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+
+        .projects-heading-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .projects-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f2c59;
+            letter-spacing: 1px;
+        }
+
+        .projects-title span { color: #0066ff; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+        }
+
+        .project-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(15, 44, 89, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 102, 255, 0.15);
+            border-color: #0066ff;
+        }
+
+        .project-img-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #e2e8f0;
+        }
+
+        .project-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-img-box img { transform: scale(1.05); }
+
+        .project-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-category {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0066ff;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .project-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f2c59;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            margin-top: auto;
+        }
+
+        .tag-item {
+            background-color: #e0f2fe;
+            color: #0284c7;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 15px;
+        }
+
+        .btn-project {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-demo {
+            background-color: #0066ff;
+            color: #ffffff;
+        }
+
+        .btn-demo:hover { background-color: #0052cc; }
+
+        /* ================= 6. FOOTER STYLES ================= */
+        .portfolio-footer {
+            width: 100%;
+            background-color: #0d2847;
+            color: #ffffff;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-inner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-brand-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .footer-brand-logo i {
+            font-size: 26px;
+            color: #38bdf8;
+        }
+
+        .footer-brand-desc {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            max-width: 320px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .footer-social-btn {
+            width: 34px;
+            height: 34px;
+            background-color: #ffffff;
+            color: #0d2847;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .footer-social-btn:hover {
+            transform: translateY(-3px);
+            background-color: #38bdf8;
+            color: #ffffff;
+        }
+
+        .footer-col-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links-list a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list a:hover { color: #38bdf8; }
+
+        .footer-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .contact-info-row i {
+            font-size: 15px;
+            color: #38bdf8;
+            width: 18px;
+            text-align: center;
+        }
+
+        .contact-info-row:hover { color: #38bdf8; }
+
+        .footer-bottom-bar {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        /* ================= 7. MOBILE RESPONSIVE MEDIA QUERIES ================= */
+        @media (max-width: 950px) {
+            .about-section {
+                flex-direction: column-reverse;
+                padding: 20px;
+                gap: 30px;
+            }
+
+            .about-content-left { max-width: 100%; }
+
+            .about-photo-right {
+                width: 100%;
+                max-width: 320px;
+                height: 400px;
+                margin: 0 auto;
+            }
+
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-inner-content { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .header-navbar {
+                padding: 0 20px;
+                justify-content: flex-end;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #0d2847;
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.show-menu {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills-bar-section, .tools-bar-section, .projects-section-block {
+                padding: 35px 20px;
+            }
+
+            .skills-bar-title, .tools-bar-title, .projects-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= SECTION 1: HEADER NAVBAR (ALAG BLOCK) ================= -->
+    <header class="header-navbar">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ================= SECTION 2: MAIN ABOUT HERO ================= -->
+    <div class="about-main-wrapper">
+        <main class="about-section">
+            <div class="about-content-left">
+                <div class="sub-heading">About Me</div>
+                <h2 class="main-title">Who Am I</h2>
+
+                <p class="about-desc">
+                    My name is Arkam Khan. I'm a Front End Developer based in India, and I'm very passionate and dedicated to my work. With experience in modern web technologies, I have acquired the skills necessary to build great and premium websites.
+                </p>
+
+                <p class="about-desc">
+                    Passionate about creating clean, responsive, and user-friendly digital experiences through elegant code and modern layout standards.
+                </p>
+            </div>
+
+            <div class="about-photo-right">
+                <img src="WhatsApp Image 2026-07-23 at 12.06.13 PM.jpeg" alt="Arkam Khan Profile">
+            </div>
+        </main>
+    </div>
+
+    <!-- ================= SECTION 3: MY SKILLS ================= -->
+    <section class="skills-bar-section">
+        <h2 class="skills-bar-title">My <span>Skills</span></h2>
+
+        <div class="skills-bar-container">
+            <div class="skill-bar-item">
+                <span class="skill-bar-name">HTML</span>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-bar-item">
+                <span class="skill-bar-name">CSS</span>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-bar-item">
+                <span class="skill-bar-name">JAVASCRIPT</span>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 4: PLATFORMS & TOOLS ================= -->
+    <section class="tools-bar-section">
+        <h2 class="tools-bar-title">Platforms & <span>Tools</span></h2>
+
+        <div class="tools-bar-container">
+            <div class="tool-bar-item">
+                <span class="tool-bar-name">VS CODE</span>
+                <div class="tools-progress-track">
+                    <div class="tools-progress-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+
+            <div class="tool-bar-item">
+                <span class="tool-bar-name">GIT & GITHUB</span>
+                <div class="tools-progress-track">
+                    <div class="tools-progress-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+
+            <div class="tool-bar-item">
+                <span class="tool-bar-name">FIGMA</span>
+                <div class="tools-progress-track">
+                    <div class="tools-progress-fill" style="width: 55%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 5: PROJECTS ================= -->
+    <section class="projects-section-block" id="project">
+        <div class="projects-heading-container">
+            <h2 class="projects-title">My <span>Projects</span></h2>
+        </div>
+
+        <div class="projects-grid">
+            <!-- PROJECT 1 -->
+            <div class="project-card">
+                <div>
+                    <div class="project-img-box">
+                        <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&q=80" alt="Amazon Home Page Clone">
+                    </div>
+
+                    <div class="project-info">
+                        <span class="project-category">E-Commerce Web App</span>
+                        <h3 class="project-name">Amazon Home Page Clone</h3>
+                        <p class="project-desc">
+                            Fully interactive and mobile-responsive Amazon front-end replica featuring multi-product deal cards, dropdown quantities, cart interactions, and navigation layout.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag-item">HTML5</span>
+                            <span class="tag-item">CSS3</span>
+                            <span class="tag-item">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-info" style="padding-top: 0;">
+                    <div class="project-btn-group">
+                        <a href="#" target="_blank" class="btn-project btn-demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="project-card">
+                <div>
+                    <div class="project-img-box">
+                        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80" alt="Online Coaching Class Website">
+                    </div>
+
+                    <div class="project-info">
+                        <span class="project-category">EdTech Platform</span>
+                        <h3 class="project-name">Online Coaching Class Website</h3>
+                        <p class="project-desc">
+                            A modern learning portal designed for students featuring course listings, instructor profiles, enrollment call-to-actions, and clean responsive layout architecture.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag-item">HTML5</span>
+                            <span class="tag-item">CSS3</span>
+                            <span class="tag-item">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-info" style="padding-top: 0;">
+                    <div class="project-btn-group">
+                        <!-- E-Commerce Project Live Demo Button -->
+<a href="#" target="_blank" class="btn-project btn-demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 6: FOOTER ================= -->
+    <footer class="portfolio-footer" id="contact">
+        <div class="footer-inner-content">
+            <!-- COL 1 -->
+            <div class="footer-brand-col">
+                <div class="footer-brand-logo">
+                    <i class="fa-solid fa-code"></i>
+                    <span>PORTFOLIO</span>
+                </div>
+                <p class="footer-brand-desc">
+                    Building responsive, modern, and high-performance web applications with HTML, CSS, and JavaScript.
+                </p>
+                <div class="footer-social-links">
+                    <a href="#" class="footer-social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="footer-social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/919319132104" target="_blank" class="footer-social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- COL 2 -->
+            <div>
+                <h4 class="footer-col-title">Quick Links</h4>
+                <ul class="footer-links-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- COL 3 -->
+            <div>
+                <h4 class="footer-col-title">Get In Touch</h4>
+                <div class="footer-contact-list">
+                    <div class="contact-info-row">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Uttar Pardesh Lucknow, India</span>
+                    </div>
+                    <a href="tel:+919319132104" class="contact-info-row">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 9336481632</span>
+                    </a>
+                    <a href="https://wa.me/919319132104" target="_blank" class="contact-info-row">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>+91 9336481632</span>
+                    </a>
+                    <a href="mailto:info@nomadzdigital.com" class="contact-info-row">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span>Chaudharyarkam13@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            Copyright © 2026 | All Rights Reserved
+        </div>
+    </footer>
+
+    <!-- ================= MOBILE MENU TOGGLE SCRIPT ================= -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('show-menu');
+                const icon = menuBtn.querySelector('i');
+                if (navLinks.classList.contains('show-menu')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('show-menu');
+                    const icon = menuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

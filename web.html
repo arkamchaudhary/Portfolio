@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Navbar - Portfolio</title>
+
+    <!-- Font Awesome Icons for Mobile Menu Toggle -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ================= NAVBAR CSS SECTION ================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+        }
+
+        /* NAVBAR MAIN CONTAINER */
+        .header-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 70px;
+            background-color: #0d2847; /* Screenshot Dark Blue Color */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* BRAND / LOGO (IF NEEDED) */
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand i {
+            color: #38bdf8;
+        }
+
+        /* NAV LINKS - RIGHT ALIGNED */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            margin-left: auto; /* Right alignment */
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        /* HOVER & ACTIVE LINK STATE */
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8; /* Active Highlight Blue */
+        }
+
+        /* HAMBURGER ICON FOR MOBILE (HIDDEN ON DESKTOP) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ================= MOBILE RESPONSIVE MEDIA QUERY ================= */
+        @media (max-width: 768px) {
+            .header-navbar {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Show menu toggle button on mobile */
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #0d2847;
+                flex-direction: column;
+                gap: 0;
+                display: none; /* Hidden by default */
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* CLASS ADDED VIA JS WHEN TOGGLED */
+            .nav-links.show-menu {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER NAVBAR HTML ================= -->
+    <header class="header-navbar">
+        
+        <!-- LOGO (Optional) -->
+        
+        <!-- NAVIGATION LINKS -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" >About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ================= JAVASCRIPT FOR MOBILE TOGGLE ================= -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle menu open/close on mobile
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show-menu');
+            
+            // Toggle Icon between Bars and Close (X)
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('show-menu')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking any menu link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show-menu');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!-- Google Fonts & Font Awesome Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ================= STYLESHEET ================= -->
+<style>
+    /* CSS VARIABLES & RESET */
+    :root {
+        --primary: #0066ff;
+        --primary-hover: #0052cc;
+        --secondary-dark: #0d2847;
+        --text-dark: #1e293b;
+        --text-muted: #64748b;
+        --bg-light: #f8fafc;
+        --white: #ffffff;
+        --card-border: #e2e8f0;
+        --shadow-sm: 0 4px 15px rgba(13, 40, 71, 0.05);
+        --shadow-md: 0 10px 30px rgba(13, 40, 71, 0.08);
+        --shadow-lg: 0 20px 40px rgba(13, 40, 71, 0.12);
+        --font-heading: 'Poppins', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 20px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+    }
+
+    body {
+        font-family: var(--font-body);
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    /* REUSABLE CLASSES */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    .section-header {
+        text-align: center;
+        max-width: 650px;
+        margin: 0 auto 50px auto;
+    }
+
+    .section-subtitle {
+        display: inline-block;
+        color: var(--primary);
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+    }
+
+    .section-title {
+        font-family: var(--font-heading);
+        font-size: 2.25rem;
+        font-weight: 800;
+        color: var(--secondary-dark);
+        line-height: 1.25;
+    }
+
+    /* BUTTONS */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 32px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: var(--primary);
+        color: var(--white);
+        box-shadow: 0 8px 20px rgba(0, 102, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(0, 102, 255, 0.35);
+    }
+
+    .btn-secondary {
+        background-color: var(--white);
+        color: var(--secondary-dark);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+        background-color: #f1f5f9;
+        transform: translateY(-2px);
+        border-color: var(--primary);
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+
+    /* 1. HERO SECTION */
+    .hero {
+        padding: 90px 0 70px 0;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f6ff 100%);
+    }
+
+    .hero-container {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .badge {
+        display: inline-block;
+        background-color: #e0f2fe;
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    .hero-title {
+        font-family: var(--font-heading);
+        font-size: 3.25rem;
+        font-weight: 800;
+        color: var(--secondary-dark);
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        margin-bottom: 35px;
+        max-width: 520px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .hero-image .image-card {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        border: 4px solid var(--white);
+    }
+
+    /* 2. FEATURES SECTION */
+    .features {
+        padding: 90px 0;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .feature-card {
+        background-color: var(--white);
+        border: 1px solid var(--card-border);
+        padding: 35px 24px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary);
+    }
+
+    .icon-box {
+        width: 54px;
+        height: 54px;
+        background-color: #e0f2fe;
+        color: var(--primary);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+        font-family: var(--font-heading);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--secondary-dark);
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    /* 3. ABOUT SECTION */
+    .about {
+        padding: 90px 0;
+        background-color: var(--white);
+    }
+
+    .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .about-image .image-wrapper {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .about-content .section-title {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        color: var(--text-muted);
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+
+    /* 4. SERVICES SECTION */
+    .services {
+        padding: 90px 0;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .service-card {
+        background-color: var(--white);
+        border: 1px solid var(--card-border);
+        padding: 40px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary);
+    }
+
+    .service-icon {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--secondary-dark);
+        margin-bottom: 12px;
+    }
+
+    .service-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+    }
+
+    /* 5. STATISTICS SECTION */
+    .stats {
+        padding: 60px 0;
+        background-color: var(--secondary-dark);
+        color: var(--white);
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-family: var(--font-heading);
+        font-size: 2.75rem;
+        font-weight: 800;
+        color: #38bdf8;
+        margin-bottom: 6px;
+    }
+
+    .stat-label {
+        font-size: 0.95rem;
+        color: #cbd5e1;
+        font-weight: 500;
+    }
+
+    /* 6. TESTIMONIALS SECTION */
+    .testimonials {
+        padding: 90px 0;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .testimonial-card {
+        background-color: var(--white);
+        border: 1px solid var(--card-border);
+        padding: 35px 28px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .stars {
+        color: #f59e0b;
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+    }
+
+    .review-text {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .profile-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .profile-info img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-info h4 {
+        font-family: var(--font-heading);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--secondary-dark);
+    }
+
+    .profile-info span {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    /* 7. CONTACT SECTION */
+    .contact {
+        padding: 90px 0;
+        background-color: var(--white);
+    }
+
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .contact-info p {
+        color: var(--text-muted);
+        margin-bottom: 30px;
+    }
+
+    .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        font-weight: 500;
+    }
+
+    .contact-item i {
+        width: 40px;
+        height: 40px;
+        background-color: #e0f2fe;
+        color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+    }
+
+    .contact-form-wrapper {
+        background-color: var(--bg-light);
+        padding: 40px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--secondary-dark);
+        margin-bottom: 8px;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-sm);
+        background-color: var(--white);
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+        border-color: var(--primary);
+    }
+
+    /* 8. FOOTER SECTION */
+    .footer {
+        background-color: var(--secondary-dark);
+        color: var(--white);
+        padding-top: 70px;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        padding-bottom: 50px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-heading);
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--white);
+    }
+
+    .logo i { color: var(--primary); }
+
+    .brand-col p {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-top: 16px;
+        max-width: 280px;
+    }
+
+    .footer-col h4 {
+        font-family: var(--font-heading);
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--white);
+    }
+
+    .footer-col ul li {
+        margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+        color: #cbd5e1;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+    }
+
+    .footer-col ul li a:hover {
+        color: #38bdf8;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-icons a {
+        width: 38px;
+        height: 38px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 24px 0;
+        text-align: center;
+        font-size: 0.875rem;
+        color: #94a3b8;
+    }
+
+    /* MOBILE RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+        .hero-title { font-size: 2.75rem; }
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+        .hero-container, .about-container, .contact-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .hero { text-align: center; }
+        .hero-description { margin-left: auto; margin-right: auto; }
+        .hero-buttons { justify-content: center; }
+        .services-grid { grid-template-columns: 1fr; }
+        .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+        .hero-title { font-size: 2.15rem; }
+        .features-grid, .stats-grid, .footer-grid { grid-template-columns: 1fr; }
+        .contact-form-wrapper { padding: 24px; }
+    }
+</style>
+
+<!-- ================= 1. HERO SECTION ================= -->
+<section class="hero" id="home">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <span class="badge">Next-Gen Web Architecture</span>
+            <h1 class="hero-title">Build Responsive Websites for Every Device</h1>
+            <p class="hero-description">
+                Deliver seamless, lightning-fast digital experiences. Engineered with modern CSS Grid, Flexbox, and mobile-first performance in mind.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Responsive Web Development">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 2. FEATURES SECTION ================= -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Why Choose Us</span>
+            <h2 class="section-title">Engineered for Performance & Scale</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Mobile Friendly</h3>
+                <p>Fluid layouts that automatically adapt to smart devices, tablets, and desktop displays seamlessly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Fast Performance</h3>
+                <p>Optimized assets and clean codebase ensure ultra-fast load times and minimal rendering latency.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
+                <h3>Modern UI</h3>
+                <p>Crafted with modern visual hierarchy, clean glassmorphism touches, and soft elegant palettes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-globe"></i></div>
+                <h3>Cross Browser Support</h3>
+                <p>Tested and guaranteed to render perfectly across Chrome, Safari, Firefox, and Edge browsers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 3. ABOUT SECTION ================= -->
+<section class="about" id="about">
+    <div class="container about-container">
+        <div class="about-image">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=800&q=80" alt="About Responsive Web Design">
+            </div>
+        </div>
+        <div class="about-content">
+            <span class="section-subtitle">About Our Craft</span>
+            <h2 class="section-title">Empowering Brands with Next-Level Frontend Standards</h2>
+            <p class="about-text">
+                Responsive Web Design isn't just about fitting content onto smaller screens—it's about re-imagining digital interaction models. We combine cutting-edge CSS architecture with intuitive UX patterns.
+            </p>
+            <p class="about-text">
+                From responsive grid layouts to automated asset scaling, every line of code is structured for scalability, accessibility, and high conversion efficiency.
+            </p>
+            <a href="#services" class="btn btn-primary" style="margin-top: 15px;">Explore Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 4. SERVICES SECTION ================= -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">What We Offer</span>
+            <h2 class="section-title">End-to-End Frontend Engineering</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Responsive Web Design</h3>
+                <p>Custom mobile-first layouts designed to scale elegantly across any screen width and pixel density.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Frontend Development</h3>
+                <p>Clean semantic HTML5, modular CSS3 architecture, and optimized vanilla JavaScript integrations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>UI/UX Design</h3>
+                <p>User-centered interface design focused on clear hierarchy, visual harmony, and smooth micro-interactions.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <h3>Website Optimization</h3>
+                <p>Core Web Vitals tuning, asset minification, and DOM optimization for speed performance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 5. STATISTICS SECTION ================= -->
+<section class="stats">
+    <div class="container stats-grid">
+        <div class="stat-card">
+            <h3 class="stat-number">500+</h3>
+            <p class="stat-label">Projects Completed</p>
+        </div>
+        <div class="stat-card">
+            <h3 class="stat-number">200+</h3>
+            <p class="stat-label">Happy Clients</p>
+        </div>
+        <div class="stat-card">
+            <h3 class="stat-number">5+</h3>
+            <p class="stat-label">Years Experience</p>
+        </div>
+        <div class="stat-card">
+            <h3 class="stat-number">100%</h3>
+            <p class="stat-label">Responsive Designs</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 6. TESTIMONIALS SECTION ================= -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Testimonials</span>
+            <h2 class="section-title">What Our Clients Say</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"The responsive transformation reduced our mobile bounce rate by 40%. The site loads instantly across all test devices!"</p>
+                <div class="profile-info">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah Jenkins">
+                    <div>
+                        <h4>Sarah Jenkins</h4>
+                        <span>Product Manager, TechFlow</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Clean code structure and excellent communication. The glassmorphism card designs look ultra-premium."</p>
+                <div class="profile-info">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="David Miller">
+                    <div>
+                        <h4>David Miller</h4>
+                        <span>Founder, InnovateX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Outstanding mobile performance! Their attention to detail on tablet and desktop breakpoints is top tier."</p>
+                <div class="profile-info">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova">
+                    <div>
+                        <h4>Elena Rostova</h4>
+                        <span>Design Director, Apex</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 7. CONTACT SECTION ================= -->
+<section class="contact" id="contact">
+    <div class="container contact-container">
+        <div class="contact-info">
+            <span class="section-subtitle">Get In Touch</span>
+            <h2 class="section-title">Ready to Upgrade Your Web Presence?</h2>
+            <p>Have a project in mind or need assistance with frontend optimization? Drop us a message and let's collaborate.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>info@responsiweb.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+1 (555) 234-5678</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Tech Park, Suite 400, San Francisco, CA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required placeholder="Your Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" required placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ================= 8. FOOTER SECTION ================= -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-col brand-col">
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>ResponsiWeb</span>
+            </a>
+            <p>Building high-performance, fluid, and scalable responsive experiences for modern web platforms.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#services">Web Architecture</a></li>
+                <li><a href="#services">UI/UX Strategy</a></li>
+                <li><a href="#services">Frontend Dev</a></li>
+                <li><a href="#services">Speed Optimization</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 ResponsiWeb. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const contactForm = document.getElementById('contactForm');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+
+                alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} shortly.`);
+                contactForm.reset();
+            });
+        }
+    });
+</script>

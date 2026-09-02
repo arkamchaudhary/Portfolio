@@ -1,0 +1,1415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Navbar - Portfolio</title>
+
+    <!-- Font Awesome Icons for Mobile Menu Toggle -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ================= NAVBAR CSS SECTION ================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+        }
+
+        /* NAVBAR MAIN CONTAINER */
+        .header-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 70px;
+            background-color: #0d2847; /* Screenshot Dark Blue Color */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* BRAND / LOGO (IF NEEDED) */
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand i {
+            color: #38bdf8;
+        }
+
+        /* NAV LINKS - RIGHT ALIGNED */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            margin-left: auto; /* Right alignment */
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        /* HOVER & ACTIVE LINK STATE */
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8; /* Active Highlight Blue */
+        }
+
+        /* HAMBURGER ICON FOR MOBILE (HIDDEN ON DESKTOP) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ================= MOBILE RESPONSIVE MEDIA QUERY ================= */
+        @media (max-width: 768px) {
+            .header-navbar {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Show menu toggle button on mobile */
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #0d2847;
+                flex-direction: column;
+                gap: 0;
+                display: none; /* Hidden by default */
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* CLASS ADDED VIA JS WHEN TOGGLED */
+            .nav-links.show-menu {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER NAVBAR HTML ================= -->
+    <header class="header-navbar">
+        
+        <!-- LOGO (Optional) -->
+        
+        <!-- NAVIGATION LINKS -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" >About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <!-- MOBILE HAMBURGER BUTTON -->
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ================= JAVASCRIPT FOR MOBILE TOGGLE ================= -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle menu open/close on mobile
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show-menu');
+            
+            // Toggle Icon between Bars and Close (X)
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('show-menu')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking any menu link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show-menu');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+</body>
+</html>.
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Layout Redesign - White & Blue Theme</title>
+
+    <!-- Google Fonts & Font Awesome & Bootstrap 5 CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ================= EMBEDDED CSS (WHITE & BLUE THEME) ================= -->
+    <style>
+        :root {
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --bg-blue-light: #eff6ff;
+            --primary-blue: #0066ff;
+            --primary-blue-hover: #0052cc;
+            --secondary-dark: #0f2c59;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --shadow-sm: 0 4px 15px rgba(15, 44, 89, 0.05);
+            --shadow-md: 0 10px 30px rgba(15, 44, 89, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        .text-blue {
+            color: var(--primary-blue);
+        }
+
+        .btn-primary-blue {
+            background: var(--primary-blue);
+            border: none;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+        .btn-primary-blue:hover {
+            background: var(--primary-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 102, 255, 0.35);
+            color: #fff;
+        }
+
+        .btn-secondary-blue {
+            background: #ffffff;
+            color: var(--secondary-dark);
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--card-border);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-secondary-blue:hover {
+            background: #f1f5f9;
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            color: var(--primary-blue);
+        }
+
+        .card-box {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            padding: 35px 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-box:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-padding {
+            padding: 90px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary-dark);
+            margin-bottom: 12px;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* 1. HERO SECTION */
+        .hero-section {
+            position: relative;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f6ff 100%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-title {
+            font-size: 3.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--secondary-dark);
+            margin-bottom: 20px;
+        }
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        .hero-graphic {
+            background: #0f2c59;
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* 2. WHAT IS UI/UX */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .concept-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--secondary-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .concept-card h3 i { color: var(--primary-blue); }
+        .concept-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* 3. WHY LEARN UI/UX */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            background: #e0f2fe;
+            color: var(--primary-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+        .why-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            margin-bottom: 10px;
+        }
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* 4. COMPARISON TABLE */
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .custom-table { margin: 0; }
+        .custom-table th {
+            background: var(--secondary-dark);
+            color: #fff;
+            font-weight: 700;
+            padding: 18px;
+            border-bottom: none;
+        }
+        .custom-table td {
+            padding: 18px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--card-border);
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+        .custom-table tr:last-child td { border-bottom: none; }
+
+        /* 5. PROCESS TIMELINE */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .process-step-card {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .process-step-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
+        }
+        .step-number {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .process-step-card h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            margin-bottom: 8px;
+        }
+        .process-step-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* 6. ESSENTIAL PRINCIPLES */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .principle-box {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .principle-box:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+        }
+        .principle-box i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        .principle-box h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            margin-bottom: 8px;
+        }
+        .principle-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* 7. TOOLS USED */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .tool-card {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .tool-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+        }
+        .tool-card i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+        .tool-card h5 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            margin-bottom: 4px;
+        }
+        .tool-card p {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* 8. BEFORE VS AFTER */
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .ba-card {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+        .ba-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .badge-old { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+        .badge-new { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+        .ba-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            margin-bottom: 10px;
+        }
+        .ba-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 9. STATISTICS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stat-box {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .stat-box h3 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 6px;
+        }
+        .stat-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* 10. TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: var(--bg-white);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+        .testimonial-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .reviewer-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .reviewer-info h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            margin-bottom: 2px;
+        }
+        .reviewer-info span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .stars {
+            color: #f59e0b;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        /* 11. FAQ SECTION */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .accordion-item {
+            background: var(--bg-white) !important;
+            border: 1px solid var(--card-border) !important;
+            border-radius: 14px !important;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .accordion-button {
+            background: #f8fafc !important;
+            color: var(--secondary-dark) !important;
+            font-weight: 600;
+            padding: 18px 20px;
+            box-shadow: none !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background: #e0f2fe !important;
+            color: var(--primary-blue) !important;
+        }
+        .accordion-body {
+            color: var(--text-muted);
+            padding: 20px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* 12. FINAL CTA SECTION */
+        .final-cta-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 28px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .final-cta-wrapper h2 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            color: var(--secondary-dark);
+            margin-bottom: 15px;
+        }
+        .final-cta-wrapper p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* 13. FOOTER */
+        .footer-section {
+            background-color: var(--secondary-dark);
+            color: #ffffff;
+            padding: 70px 20px 25px 20px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 50px;
+        }
+        .footer-col h6 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        .footer-logo i { color: #38bdf8; }
+        .footer-col p, .footer-col ul li a {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-col ul li a:hover { color: #38bdf8; }
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        .social-icon-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-icon-btn:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        .footer-line-wrapper {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 25px;
+            margin-top: 10px;
+        }
+        .footer-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.5rem; }
+            .concept-grid, .why-grid, .process-grid, .principles-grid, .tools-grid, .ba-grid, .stats-grid, .testimonials-grid, .footer-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .process-grid, .principles-grid, .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .process-grid, .principles-grid, .stats-grid, .footer-container { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.1rem; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="badge mb-3 px-3 py-2 rounded-pill fw-semibold" style="background: #e0f2fe; color: #0066ff; border: 1px solid #bae6fd;">
+                        Advanced Frontend UX Architecture
+                    </span>
+                    <h1 class="hero-title">
+                        Master <span class="text-blue">UI/UX Layout Redesign</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Transform ordinary web interfaces into high-converting digital masterworks. Discover how thoughtful layout redesigns elevate frontend engineering and user retention.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#topics" class="btn-primary-blue">
+                            <i class="fa-solid fa-rocket"></i> Start Learning
+                        </a>
+                        <a href="#what-is-uiux" class="btn-secondary-blue">
+                            <i class="fa-solid fa-compass"></i> Explore Topics
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-graphic">
+                        <div class="d-flex gap-2 mb-3">
+                            <div style="width:12px; height:12px; border-radius:50%; background:#ef4444;"></div>
+                            <div style="width:12px; height:12px; border-radius:50%; background:#f59e0b;"></div>
+                            <div style="width:12px; height:12px; border-radius:50%; background:#22c55e;"></div>
+                        </div>
+                        <pre style="color:#38bdf8; font-family:'Courier New', monospace; font-size:0.85rem; margin:0;"><code><span style="color:#c084fc;">const</span> <span style="color:#38bdf8;">RedesignSystem</span> = {
+  <span style="color:#a78bfa;">wireframe</span>: <span style="color:#34d399;">'Optimized'</span>,
+  <span style="color:#a78bfa;">hierarchy</span>: <span style="color:#34d399;">'Fluid Grid'</span>,
+  <span style="color:#a78bfa;">accessibility</span>: <span style="color:#34d399;">'WCAG 2.1'</span>,
+  <span style="color:#a78bfa;">render</span>() {
+    <span style="color:#c084fc;">return</span> <span style="color:#34d399;">'High Conversion UI'</span>;
+  }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 2. WHAT IS UI/UX ================= -->
+    <section class="section-padding" id="what-is-uiux">
+        <div class="container">
+            <div class="section-header">
+                <h2>What is UI/UX Layout Redesign?</h2>
+                <p>Understand the foundational pillars that drive exceptional digital user experiences.</p>
+            </div>
+            <div class="concept-grid">
+                <div class="card-box concept-card">
+                    <h3><i class="fa-solid fa-paintbrush"></i> What is UI?</h3>
+                    <p>User Interface (UI) focuses on the visual assets—typography, color palettes, buttons, icons, and spacing—that users interact with on a screen.</p>
+                </div>
+                <div class="card-box concept-card">
+                    <h3><i class="fa-solid fa-brain"></i> What is UX?</h3>
+                    <p>User Experience (UX) governs the psychological and structural journey a user takes, ensuring every interaction is intuitive, efficient, and deeply satisfying.</p>
+                </div>
+                <div class="card-box concept-card">
+                    <h3><i class="fa-solid fa-wand-magic-sparkles"></i> What is Layout Redesign?</h3>
+                    <p>Layout redesign is the systematic overhaul of information architecture and visual hierarchy to eliminate friction, modernize aesthetics, and boost clarity.</p>
+                </div>
+                <div class="card-box concept-card">
+                    <h3><i class="fa-solid fa-chart-line"></i> Why Is It Important?</h3>
+                    <p>A superior redesign bridges the gap between raw code and human emotion, resulting in lower bounce rates, higher engagement, and maximum conversions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. WHY LEARN UI/UX ================= -->
+    <section class="section-padding bg-light-blue" id="topics">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Learn UI/UX?</h2>
+                <p>Empower your frontend workflow with elite design principles.</p>
+            </div>
+            <div class="why-grid">
+                <div class="card-box why-card">
+                    <div class="why-icon"><i class="fa-solid fa-face-smile"></i></div>
+                    <h4>Better User Experience</h4>
+                    <p>Create frictionless user journeys that delight visitors from the first second.</p>
+                </div>
+                <div class="card-box why-card">
+                    <div class="why-icon"><i class="fa-solid fa-display"></i></div>
+                    <h4>Modern Interfaces</h4>
+                    <p>Build cutting-edge SaaS aesthetics utilizing clean components and smooth shadows.</p>
+                </div>
+                <div class="card-box why-card">
+                    <div class="why-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h4>Responsive Design</h4>
+                    <p>Ensure pixel-perfect layouts across mobile, tablet, and widescreen devices.</p>
+                </div>
+                <div class="card-box why-card">
+                    <div class="why-icon"><i class="fa-solid fa-fire"></i></div>
+                    <h4>Increased Engagement</h4>
+                    <p>Drive higher click-through rates with strategic visual hierarchy and CTA placement.</p>
+                </div>
+                <div class="card-box why-card">
+                    <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h4>Faster Navigation</h4>
+                    <p>Guide users intuitively through information without cognitive overload.</p>
+                </div>
+                <div class="card-box why-card">
+                    <div class="why-icon"><i class="fa-solid fa-award"></i></div>
+                    <h4>Professional Design</h4>
+                    <p>Elevate your portfolio to enterprise standards comparable to top tech companies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. UI VS UX COMPARISON ================= -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>UI vs UX Comparison</h2>
+                <p>Clear distinctions between visual craft and structural psychology.</p>
+            </div>
+            <div class="comparison-container">
+                <table class="table custom-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>User Interface (UI)</th>
+                            <th>User Experience (UX)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fa-solid fa-bullseye me-2 text-blue"></i> Core Focus</td>
+                            <td>Look, feel, and visual interactivity</td>
+                            <td>Structure, usability, and problem-solving</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-toolbox me-2 text-blue"></i> Deliverables</td>
+                            <td>Design systems, style guides, components</td>
+                            <td>Wireframes, user flows, personas, research</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-palette me-2 text-blue"></i> Elements</td>
+                            <td>Colors, typography, buttons, spacing</td>
+                            <td>Information architecture, testing, navigation logic</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-question me-2 text-blue"></i> Primary Question</td>
+                            <td>"Does it look stunning and branded?"</td>
+                            <td>"Is it easy and intuitive to use?"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 5. PROCESS TIMELINE ================= -->
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="section-header">
+                <h2>UI/UX Redesign Process</h2>
+                <p>A step-by-step roadmap from initial discovery to final code deployment.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step-card">
+                    <span class="step-number">Step 01</span>
+                    <h5><i class="fa-solid fa-magnifying-glass me-2 text-blue"></i> Research</h5>
+                    <p>Analyze user behavior, feedback, and competitor layout benchmarks.</p>
+                </div>
+                <div class="process-step-card">
+                    <span class="step-number">Step 02</span>
+                    <h5><i class="fa-solid fa-pen-ruler me-2 text-blue"></i> Wireframe</h5>
+                    <p>Draft low-fidelity sketches outlining structural content flow.</p>
+                </div>
+                <div class="process-step-card">
+                    <span class="step-number">Step 03</span>
+                    <h5><i class="fa-solid fa-image me-2 text-blue"></i> Mockup</h5>
+                    <p>Apply modern color palettes, typography, and layout styling.</p>
+                </div>
+                <div class="process-step-card">
+                    <span class="step-number">Step 04</span>
+                    <h5><i class="fa-solid fa-arrows-spin me-2 text-blue"></i> Prototype</h5>
+                    <p>Simulate interactive states, hover micro-interactions, and transitions.</p>
+                </div>
+                <div class="process-step-card">
+                    <span class="step-number">Step 05</span>
+                    <h5><i class="fa-solid fa-code me-2 text-blue"></i> Development</h5>
+                    <p>Translate designs into clean HTML5, CSS3, and Bootstrap 5 code.</p>
+                </div>
+                <div class="process-step-card">
+                    <span class="step-number">Step 06</span>
+                    <h5><i class="fa-solid fa-vial me-2 text-blue"></i> Testing</h5>
+                    <p>Verify cross-browser compatibility and responsive breakpoints.</p>
+                </div>
+                <div class="process-step-card" style="grid-column: span 2;">
+                    <span class="step-number">Step 07</span>
+                    <h5><i class="fa-solid fa-rocket me-2 text-blue"></i> Launch</h5>
+                    <p>Deploy production-ready code live to the web with zero latency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 6. ESSENTIAL DESIGN PRINCIPLES ================= -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Essential Design Principles</h2>
+                <p>The core tenets that separate amateur layouts from professional masterpieces.</p>
+            </div>
+            <div class="principles-grid">
+                <div class="principle-box">
+                    <i class="fa-solid fa-font"></i>
+                    <h5>Typography</h5>
+                    <p>Clear scale and legible font weights for readable content.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-palette"></i>
+                    <h5>Colors</h5>
+                    <p>Harmonious palettes with deliberate contrast ratios.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-expand"></i>
+                    <h5>White Space</h5>
+                    <p>Generous padding to let components breathe and focus.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-table-cells"></i>
+                    <h5>Grid System</h5>
+                    <p>Structured alignment using CSS Grid and Flexbox.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h5>Visual Hierarchy</h5>
+                    <p>Directing user attention to primary CTA actions first.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-universal-access"></i>
+                    <h5>Accessibility</h5>
+                    <p>Inclusive design standards meeting WCAG criteria.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <h5>Responsive Design</h5>
+                    <p>Fluid adaptation across all viewport dimensions.</p>
+                </div>
+                <div class="principle-box">
+                    <i class="fa-solid fa-clone"></i>
+                    <h5>Consistency</h5>
+                    <p>Unified design tokens throughout the entire application.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 7. TOOLS USED ================= -->
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tools Used in Modern Redesign</h2>
+                <p>Industry-standard software and code stacks for elite execution.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fa-brands fa-figma"></i>
+                    <div>
+                        <h5>Figma</h5>
+                        <p>Collaborative interface design & prototyping</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <div>
+                        <h5>Adobe XD</h5>
+                        <p>Vector wireframing and layout systems</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-image"></i>
+                    <div>
+                        <h5>Photoshop</h5>
+                        <p>High-resolution asset and image retouching</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-html5 text-danger"></i>
+                    <div>
+                        <h5>HTML5</h5>
+                        <p>Semantic markup structure</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-css3-alt text-primary"></i>
+                    <div>
+                        <h5>CSS3</h5>
+                        <p>Advanced styling & keyframe animations</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-js text-warning"></i>
+                    <div>
+                        <h5>JavaScript</h5>
+                        <p>Dynamic interactive DOM handling</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-bootstrap" style="color:#8b5cf6;"></i>
+                    <div>
+                        <h5>Bootstrap</h5>
+                        <p>Rapid responsive grid components</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-wind text-info"></i>
+                    <div>
+                        <h5>Tailwind CSS</h5>
+                        <p>Utility-first modern styling framework</p>
+                    </div>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-react text-info"></i>
+                    <div>
+                        <h5>React</h5>
+                        <p>Component-driven UI architecture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 8. BEFORE VS AFTER ================= -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Before vs After Redesign</h2>
+                <p>Witness the dramatic transformation from cluttered legacy layouts to modern clarity.</p>
+            </div>
+            <div class="ba-grid">
+                <div class="ba-card">
+                    <span class="ba-badge badge-old">Before Redesign</span>
+                    <h4>Cluttered Legacy Layout</h4>
+                    <p>Characterized by heavy text walls, cramped spacing, inconsistent button styles, poor color contrast, and a confusing information architecture that causes user drop-off.</p>
+                </div>
+                <div class="ba-card">
+                    <span class="ba-badge badge-new">After Redesign</span>
+                    <h4>Modern SaaS Masterpiece</h4>
+                    <p>Engineered with clean cards, ample white space, clear typographic hierarchy, micro-animations, and strategic conversion funnels optimized for high engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 9. STATISTICS ================= -->
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>100+</h3>
+                    <p>UI Examples</p>
+                </div>
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>UX Case Studies</p>
+                </div>
+                <div class="stat-box">
+                    <h3>30+</h3>
+                    <p>Real Projects</p>
+                </div>
+                <div class="stat-box">
+                    <h3>10K+</h3>
+                    <p>Happy Learners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 10. TESTIMONIALS ================= -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Designers & Developers Say</h2>
+                <p>Hear from professionals who transformed their frontend workflow.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"The layout redesign framework taught here completely changed how I approach frontend architecture. My conversion rates skyrocketed."</p>
+                    </div>
+                    <div class="reviewer-info">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="reviewer-avatar">
+                        <div>
+                            <h5>Sarah Jenkins</h5>
+                            <span>Senior Frontend Engineer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"An absolute masterpiece of a curriculum. The before and after comparisons helped me bridge the gap between design and clean code."</p>
+                    </div>
+                    <div class="reviewer-info">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="reviewer-avatar">
+                        <div>
+                            <h5>Alex Rivera</h5>
+                            <span>UI/UX Lead Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Clean, professional, and directly actionable. Every developer looking to build SaaS products should study these layout patterns."</p>
+                    </div>
+                    <div class="reviewer-info">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="reviewer-avatar">
+                        <div>
+                            <h5>Emily Chen</h5>
+                            <span>Full-Stack Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 11. FAQ SECTION ================= -->
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Got questions about UI/UX layout redesign? We have answers.</p>
+            </div>
+            <div class="faq-container">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Why is UI/UX Layout Redesign important for frontend developers?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Frontend developers write code to render interfaces. Understanding UI/UX redesign allows you to spot structural flaws, improve visual hierarchy, and build products that genuinely engage users rather than just functional code.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                How does this template ensure mobile responsiveness?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                All layouts are built using modern CSS Grid, Flexbox, and Bootstrap 5 responsive utility classes, guaranteeing seamless scaling across mobile phones, tablets, and widescreen desktops.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Can I use this code directly in my production projects?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! The code is 100% production-ready, clean, well-commented, and modular, requiring zero external dependencies outside standard CDNs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 12. FINAL CTA SECTION (WITH VIEW & DOWNLOAD MODAL TRIGGER) ================= -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="final-cta-wrapper">
+                <h2>Ready to Design Better User Experiences?</h2>
+                <p>Start exploring modern frontend engineering techniques and preview our comprehensive roadmap before downloading.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="https://www.scribd.com/document/722943946/CCS370-UI-and-UX-Design-Lecture-Notes-2#google_vignette" class="btn-primary-blue">
+                        <i class="fa-solid fa-rocket"></i> Start Learning
+                    </a>
+                    
+                    <!-- BUTTON TO OPEN VIEW/DOWNLOAD MODAL -->
+                    <button type="button" class="btn-secondary-blue" data-bs-toggle="modal" data-bs-target="#pdfPreviewModal">
+                        <i class="fa-solid fa-download me-2"></i> Download Roadmap
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PDF PREVIEW & DOWNLOAD MODAL ================= -->
+    <div class="modal fade" id="pdfPreviewModal" tabindex="-1" aria-labelledby="pdfPreviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; overflow: hidden; border: none; box-shadow: 0 25px 50px rgba(0,0,0,0.2);">
+                <div class="modal-header" style="background: var(--secondary-dark); color: #fff; padding: 20px 25px;">
+                    <h5 class="modal-title fw-bold" id="pdfPreviewModalLabel">
+                        <i class="fa-solid fa-file-pdf text-info me-2"></i> Roadmap Preview & Download
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 bg-light text-center" style="min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <i class="fa-solid fa-file-pdf text-danger fa-3x mb-3"></i>
+                    <h5 class="fw-bold mb-2 text-dark">Roadmap PDF Document</h5>
+                    <p class="text-muted mb-4">Aap chahein toh PDF ko naye tab me dekh sakte hain ya direct download kar sakte hain.</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="r.png" target="_blank" class="btn btn-outline-primary rounded-pill px-4">
+                            <i class="fa-solid fa-eye me-2"></i> Open PDF in New Tab
+                        </a>
+                        <a href="roadmap.pdf" download="roadmap.pdf" class="btn btn-primary-blue px-4 rounded-pill">
+                            <i class="fa-solid fa-download me-2"></i> Download PDF Now
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer bg-white px-4 py-3">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 13. FOOTER SECTION ================= -->
+    <footer class="footer-section" id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>UI/UX Redesign</span>
+                </div>
+                <p>Building high-performance, fluid, and scalable responsive experiences for modern web platforms.</p>
+            </div>
+            <div class="footer-col">
+                <h6>Quick Links</h6>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#what-is-uiux">About</a></li>
+                    <li><a href="#topics">Features</a></li>
+                    <li><a href="#topics">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h6>Resources</h6>
+                <ul>
+                    <li><a href="#topics">Design System</a></li>
+                    <li><a href="#topics">UI Components</a></li>
+                    <li><a href="#topics">Documentation</a></li>
+                    <li><a href="#topics">Roadmap</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h6>Follow Us</h6>
+                <div class="social-icons" style="margin-top: 15px;">
+                    <a href="#" class="social-icon-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon-btn"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="social-icon-btn"><i class="fa-brands fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-line-wrapper">
+            <div class="footer-bottom">
+                <p>&copy; 2026 UI/UX Redesign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

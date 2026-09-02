@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Projects</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* ================= NAVBAR CSS ================= */
+        .header-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 70px;
+            background-color: #0d2847;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand i {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ================= PROJECTS SECTION CSS ================= */
+        .projects-outer-wrapper {
+            width: 100%;
+            background-color: #f8fafc;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .projects-container-card {
+            max-width: 1150px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(13, 40, 71, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .projects-main-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: #0d2847;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .projects-main-title span {
+            color: #0066ff;
+        }
+
+        .projects-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .project-card-item {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card-item:hover {
+            transform: translateY(-4px);
+            border-color: #0066ff;
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.15);
+        }
+
+        .project-card-img-box {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #f1f5f9;
+        }
+
+        .project-card-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card-item:hover .project-card-img-box img {
+            transform: scale(1.04);
+        }
+
+        .project-card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-category-tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #0066ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .project-item-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0d2847;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .project-item-desc {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+
+        .project-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            margin-bottom: 24px;
+        }
+
+        .tech-pill {
+            background-color: #e0f2fe;
+            color: #0284c7;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .btn-live-demo {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #0066ff;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-live-demo:hover {
+            background-color: #0052cc;
+        }
+
+        /* ================= FOOTER CSS ================= */
+        .portfolio-footer {
+            width: 100%;
+            background-color: #0d2847;
+            color: #ffffff;
+            padding: 60px 40px 30px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-col-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .footer-logo i {
+            font-size: 24px;
+            color: #38bdf8;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            max-width: 330px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .social-circle-btn {
+            width: 38px;
+            height: 38px;
+            background-color: #ffffff;
+            color: #0d2847;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .social-circle-btn:hover {
+            transform: translateY(-3px);
+            background-color: #38bdf8;
+            color: #ffffff;
+        }
+
+        .footer-heading {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 22px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #cbd5e1;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item i {
+            font-size: 16px;
+            color: #38bdf8;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            color: #ffffff;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 25px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 850px) {
+            .header-navbar {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #0d2847;
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.show-menu {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .projects-outer-wrapper {
+                padding: 30px 15px;
+            }
+
+            .projects-container-card {
+                padding: 30px 20px;
+            }
+
+            .projects-grid-layout {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .projects-main-title {
+                font-size: 26px;
+                margin-bottom: 30px;
+            }
+
+            .project-card-img-box {
+                height: 190px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-desc {
+                max-width: 100%;
+            }
+
+            .portfolio-footer {
+                padding: 40px 20px 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="header-navbar">
+        <a href="index.html" class="nav-brand">
+            <i class="fa-solid fa-code"></i> Portfolio
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="project.html" class="active">Project</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ================= MY PROJECTS SECTION ================= -->
+    <section class="projects-outer-wrapper" id="project">
+        <div class="projects-container-card">
+            
+            <h2 class="projects-main-title">My <span>Projects</span></h2>
+
+            <div class="projects-grid-layout">
+                
+             <!-- CARD 1: E-COMMERCE -->
+<div class="project-card-item">
+    <div class="project-card-img-box">
+        <img src="am.webp" alt="E-Commerce Platform">
+    </div>
+
+    <div class="project-card-body">
+        <span class="project-category-tag">Web Application</span>
+        <h3 class="project-item-title">E-Commerce</h3>
+        <p class="project-item-desc">
+E-Commerce — React Web Application
+React.js, JavaScript, HTML5, CSS3
+
+Developed a responsive e-commerce web application...
+Implemented dynamic product listings...
+Designed a modern and responsive interface...
+Built reusable React components...        </p>
+
+        <div class="project-tech-tags">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">CSS3</span>
+        </div>
+
+        <a href="https://ecommerce-nine-navy-93.vercel.app" target="_blank" class="btn-live-demo">Live Demo</a>
+    </div>
+</div>
+             <!-- CARD 2: ALTA LOMA -->
+<div class="project-card-item">
+    <div class="project-card-img-box">
+        <!-- Path updated to h1.webp -->
+        <img src="h1.webp" alt="Alta Loma Project Screenshot - Modern Web Platform">
+    </div>
+
+    <div class="project-card-body">
+        <span class="project-category-tag">Web Portal / Healthcare & Living</span>
+        <h3 class="project-item-title">Alta Loma</h3>
+        <p class="project-item-desc">
+Alta Loma — Healthcare & Living Web Portal
+HTML5, CSS3, JavaScript
+
+Developed a responsive web portal interface...
+Implemented structured navigation...
+Created a visually consistent layout...
+Improved frontend usability...        </p>
+
+        <div class="project-tech-tags">
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">CSS3</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">Responsive UI</span>
+        </div>
+
+        <a href="https://alta-loma-alpha.vercel.app/" target="_blank" class="btn-live-demo">Live Demo</a>
+    </div>
+</div>
+<!-- CARD 3: ONLINE COACHING CENTER -->
+<div class="project-card-item">
+    <div class="project-card-img-box">
+        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80" alt="Online Coaching Center">
+    </div>
+
+    <div class="project-card-body">
+        <span class="project-category-tag">EdTech Platform</span>
+        <h3 class="project-item-title">Online Coaching Center</h3>
+        <p class="project-item-desc">
+            A comprehensive learning platform offering interactive courses, instructor dashboards, video lecture integration, and student enrollment management.
+        </p>
+
+        <div class="project-tech-tags">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">CSS3</span>
+        </div>
+
+        <a href="https://arkamchaudhary.github.io/coatching-class-cms/" target="_blank" class="btn-live-demo">Live Demo</a>
+    </div>
+</div>
+
+<!-- CARD 4: AMAZON HOME PAGE CLONE -->
+<div class="project-card-item">
+    <div class="project-card-img-box">
+        <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&q=80" alt="Amazon Home Page Clone">
+    </div>
+
+    <div class="project-card-body">
+        <span class="project-category-tag">E-Commerce UI Replica</span>
+        <h3 class="project-item-title">Amazon Home Page Clone</h3>
+        <p class="project-item-desc">
+            A pixel-perfect, fully interactive clone of the Amazon homepage featuring product grid showcases, deal carousels, responsive navigation bars, delivery pin code modals, and shopping cart flows.
+        </p>
+
+        <div class="project-tech-tags">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">CSS3 / Flexbox</span>
+            <span class="tech-pill">Responsive UI</span>
+        </div>
+
+        <a href="#" target="_blank" class="btn-live-demo">Live Demo</a>
+    </div>
+</div>  
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="portfolio-footer" id="contact">
+        <div class="footer-container">
+            
+            <div class="footer-col-brand">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-code"></i>
+                    <span>PORTFOLIO</span>
+                </div>
+                <p class="footer-desc">
+                    Building responsive, modern, and high-performance web applications with HTML, CSS, and JavaScript.
+                </p>
+                <div class="footer-socials">
+                    <a href="#" class="social-circle-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-circle-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/919319132104" target="_blank" class="social-circle-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-heading">Get In Touch</h4>
+                <div class="footer-contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Uttar Pardesh Lucknow,India</span>
+                    </div>
+                    <a href="tel:+919319132104" class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 9336481632</span>
+                    </a>
+                    <a href="https://wa.me/919319132104" target="_blank" class="contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>+91 9336481632</span>
+                    </a>
+                    <a href="mailto:info@nomadzdigital.com" class="contact-item">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span>Chaudharyarkam13@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-copyright">
+            Copyright © 2026 | All Rights Reserved
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show-menu');
+            
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('show-menu')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show-menu');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
